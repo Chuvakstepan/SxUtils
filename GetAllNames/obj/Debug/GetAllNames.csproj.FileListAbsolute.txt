@@ -1,0 +1,20 @@
+C:\Users\chuva\source\repos\GetAllNames\GetAllNames\bin\Debug\GetAllNames.exe.config
+C:\Users\chuva\source\repos\GetAllNames\GetAllNames\bin\Debug\GetAllNames.exe
+C:\Users\chuva\source\repos\GetAllNames\GetAllNames\bin\Debug\GetAllNames.pdb
+C:\Users\chuva\source\repos\GetAllNames\GetAllNames\obj\Debug\GetAllNames.csprojResolveAssemblyReference.cache
+C:\Users\chuva\source\repos\GetAllNames\GetAllNames\obj\Debug\GetAllNames.csproj.CoreCompileInputs.cache
+C:\Users\chuva\source\repos\GetAllNames\GetAllNames\obj\Debug\GetAllNames.exe
+C:\Users\chuva\source\repos\GetAllNames\GetAllNames\obj\Debug\GetAllNames.pdb
+C:\Users\User\Downloads\Telegram Desktop\GetAllNames\GetAllNames\GetAllNames\bin\Debug\GetAllNames.exe.config
+C:\Users\User\Downloads\Telegram Desktop\GetAllNames\GetAllNames\GetAllNames\bin\Debug\GetAllNames.exe
+C:\Users\User\Downloads\Telegram Desktop\GetAllNames\GetAllNames\GetAllNames\bin\Debug\GetAllNames.pdb
+C:\Users\User\Downloads\Telegram Desktop\GetAllNames\GetAllNames\GetAllNames\obj\Debug\GetAllNames.csprojAssemblyReference.cache
+C:\Users\User\Downloads\Telegram Desktop\GetAllNames\GetAllNames\GetAllNames\obj\Debug\GetAllNames.csproj.CoreCompileInputs.cache
+C:\Users\User\Downloads\Telegram Desktop\GetAllNames\GetAllNames\GetAllNames\obj\Debug\GetAllNames.exe
+C:\Users\User\Downloads\Telegram Desktop\GetAllNames\GetAllNames\GetAllNames\obj\Debug\GetAllNames.pdb
+C:\Users\Rinaldo\RiderProjects\GetAllNames\GetAllNames\bin\Debug\GetAllNames.exe.config
+C:\Users\Rinaldo\RiderProjects\GetAllNames\GetAllNames\bin\Debug\GetAllNames.exe
+C:\Users\Rinaldo\RiderProjects\GetAllNames\GetAllNames\bin\Debug\GetAllNames.pdb
+C:\Users\Rinaldo\RiderProjects\GetAllNames\GetAllNames\obj\Debug\GetAllNames.csprojResolveAssemblyReference.cache
+C:\Users\Rinaldo\RiderProjects\GetAllNames\GetAllNames\obj\Debug\GetAllNames.exe
+C:\Users\Rinaldo\RiderProjects\GetAllNames\GetAllNames\obj\Debug\GetAllNames.pdb
