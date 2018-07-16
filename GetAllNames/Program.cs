@@ -160,7 +160,13 @@ namespace GetAllNames
                     _spisokPrint.Add(title);
                     _spisokPrintBat.Add("CDNSP.py -r -g " + titleId + "-0-"+titleKey);
             }
-            
+            if (_spisokPrint.Count()==0)
+            {
+                Console.WriteLine("Обновлений тайтлов не найдено");
+                Console.WriteLine("Нажмите любую клавишу для выхода");
+                Console.ReadKey();
+                return;
+            }
             SaveNamesToFile(newTitlesFile);
 
             Console.WriteLine("Список новых тайтлов записан в " + newTitlesFile);
@@ -168,12 +174,16 @@ namespace GetAllNames
             if (Console.ReadKey().Key==ConsoleKey.Y)
             {
                 SaveBatToCDNSP(batFile);
+                Console.WriteLine("");
                 Console.WriteLine("Файл start_update.bat сформирован");
                 Console.WriteLine("После запуска CDNSP и успешной скачки тайтлов нажмите Y для того чтобы объединить newtitlekeys.txt и titlekeys.txt");
                 if (Console.ReadKey().Key == ConsoleKey.Y)
                 {
                     MergeTitleKeys(newTitlesFile, currentTitlesFile);
+                    Console.WriteLine("Файлы успешно объединены");
                 }
+                Console.WriteLine("Нажмите любую клавишу для выхода");
+                Console.ReadKey();
 
             } else
             {
@@ -188,6 +198,7 @@ namespace GetAllNames
             {
                 File.AppendAllText(currentTitlesFile, s + Environment.NewLine);
             }
+            File.Delete(newTitlesfile);
         }
 
 
