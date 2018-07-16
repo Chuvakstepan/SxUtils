@@ -12,7 +12,8 @@ namespace GetAllNames
     {
         private static string[] _dirs;
         private static List<string> _spisokPrint = new List<string>();
-        
+        private static List<string> _spisokPrintBat = new List<string>();
+
         static void Main(string[] args)
         {
             if (args.Contains("-update"))
@@ -25,6 +26,7 @@ namespace GetAllNames
             
             var normalNames = Directory.GetCurrentDirectory() + "\\filenames.txt";
             var dlcNames = Directory.GetCurrentDirectory() + "\\dlcnames.txt";
+
             var textfilepath = dlcMode ? dlcNames : normalNames;
 
             if (File.Exists(textfilepath))
@@ -52,6 +54,18 @@ namespace GetAllNames
                 var appendText = filename + Environment.NewLine;
                 File.AppendAllText(filepath, appendText, Encoding.UTF8);
             }
+        }
+
+        private static void SaveBatToCDNSP(string batFile)
+        {
+            foreach (var str1 in _spisokPrintBat)
+            {
+                var appendText = str1 + Environment.NewLine;
+                File.AppendAllText(batFile, appendText, Encoding.UTF8);
+            }
+
+
+
         }
 
         private static void GetDlcNames()
@@ -111,9 +125,12 @@ namespace GetAllNames
 
             var currentTitlesFile = Directory.GetCurrentDirectory() + "\\titlekeys.txt";
             var newTitlesFile = Directory.GetCurrentDirectory() + "\\newtitlekeys.txt";
-            
+            var batFile = Directory.GetCurrentDirectory() + "\\start_update.bat";
+
             if (File.Exists(newTitlesFile))
                 File.Delete(newTitlesFile);
+            if (File.Exists(batFile))
+                File.Delete(batFile);
 
             if (!File.Exists(currentTitlesFile))
             {
@@ -132,18 +149,47 @@ namespace GetAllNames
             foreach (var title in filteredTitles)
             {
                 var splitter = title.IndexOf('|');
+                if (splitter<1)
+                {
+                    continue;
+                }
                 var titleId = title.Substring(0, splitter);
+                var titleKey = title.Substring(splitter + 1, 32);
 
                 if (!exceptionXml.Contains(titleId))
                     _spisokPrint.Add(title);
+                    _spisokPrintBat.Add("CDNSP.py -r -g " + titleId + "-0-"+titleKey);
             }
             
             SaveNamesToFile(newTitlesFile);
 
             Console.WriteLine("Список новых тайтлов записан в " + newTitlesFile);
-            Console.WriteLine("Нажмите любую клавишу для выхода");
-            Console.ReadKey();
+            Console.WriteLine("Нажмите Y для формирования исполняемого файла для CDNSP, нажмите любую другую клавишу для выхода");
+            if (Console.ReadKey().Key==ConsoleKey.Y)
+            {
+                SaveBatToCDNSP(batFile);
+                Console.WriteLine("Файл start_update.bat сформирован");
+                Console.WriteLine("После запуска CDNSP и успешной скачки тайтлов нажмите Y для того чтобы объединить newtitlekeys.txt и titlekeys.txt");
+                if (Console.ReadKey().Key == ConsoleKey.Y)
+                {
+                    MergeTitleKeys(newTitlesFile, currentTitlesFile);
+                }
+
+            } else
+            {
+
+            }
         }
+
+        private static void MergeTitleKeys(string newTitlesfile, string currentTitlesFile)
+        {
+            string[] newtitles = File.ReadAllLines(newTitlesfile);
+            foreach (string s in newtitles)
+            {
+                File.AppendAllText(currentTitlesFile, s + Environment.NewLine);
+            }
+        }
+
 
         private static List<string> GetNswdbXml()
         {
