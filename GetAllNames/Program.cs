@@ -61,8 +61,9 @@ namespace GetAllNames
             foreach (var str1 in _spisokPrintBat)
             {
                 var appendText = str1 + Environment.NewLine;
-                File.AppendAllText(batFile, appendText, Encoding.UTF8);
+                File.AppendAllText(batFile, appendText, new UTF8Encoding(false));
             }
+            File.AppendAllText(batFile, "pause", new UTF8Encoding(false));
 
 
 
@@ -136,8 +137,7 @@ namespace GetAllNames
             {
                 Console.WriteLine("Файл titlekeys.txt не найден!");
                 Console.WriteLine("Нажмите любую клавишу для выхода");
-                Console.ReadKey(); 
-                
+                Console.ReadKey();                 
                 return;
             }
 
@@ -184,9 +184,6 @@ namespace GetAllNames
                 }
                 Console.WriteLine("Нажмите любую клавишу для выхода");
                 Console.ReadKey();
-
-            } else
-            {
 
             }
         }
